@@ -1,5 +1,5 @@
 const IndexPage = () => {
-  return <div>Hello notion-db-chrome-extension test two</div>;
+  return <div className="text-3xl font-bold underline">Hello world</div>;
 };
 
 export default IndexPage;
