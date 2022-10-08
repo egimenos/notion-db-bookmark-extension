@@ -6,6 +6,7 @@
       "patterns": [
         "styles/**",
         "pages/**",
+        "components/**",
         "public/**",
         "helpers/**",
         "next.config.js"
@@ -25,6 +26,7 @@
       "patterns": [
         "styles/**",
         "pages/**",
+        "components/**",
         "public/**",
         "helpers/**",
         "next.config.js"
