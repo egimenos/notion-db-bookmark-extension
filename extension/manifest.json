@@ -1,7 +1,7 @@
 {
-  "name": "Next Chrome",
-  "description": "Next.js Chrome Extension starter",
-  "version": "0.0.1",
+  "name": "Notion Bookmarks Chrome Extension",
+  "description": "Chrome extension to save links as database entries in notion",
+  "version": "0.1",
   "manifest_version": 3,
   "action": {
     "default_title": "Next.js app",

@@ -51,6 +51,7 @@
     "watch:linux": "npm-watch build:linux"
   },
   "dependencies": {
+    "@notionhq/client": "^2.2.1",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"
