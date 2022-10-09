@@ -3,6 +3,7 @@ import TagList from "./TagList";
 
 const Form = ({ handleSaveBookmark }) => {
   const [title, setTitle] = useState("");
+  const [notes, setNotes] = useState("");
   const [tags, setTags] = useState([]);
 
   const handleTagInputEnter = (e) => {
@@ -14,11 +15,15 @@ const Form = ({ handleSaveBookmark }) => {
 
   const handleSubmit = (e) => {
     console.log("onsubmit");
-    handleSaveBookmark(title, tags);
+    handleSaveBookmark(title, notes, tags);
   };
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
+  };
+
+  const handleNotesChange = (e) => {
+    setNotes(e.target.value);
   };
 
   const handleRemoveTag = (_event, tagToDelete) => {
@@ -41,6 +46,20 @@ const Form = ({ handleSaveBookmark }) => {
           type="text"
           placeholder="Great resource I want to save"
         ></input>
+      </div>
+      <div className="mb-4">
+        <label
+          htmlFor="notes"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Notes
+        </label>
+        <textarea
+          onChange={handleNotesChange}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-300"
+          type="text"
+          placeholder="Some notes I want to remember about the bookmark"
+        ></textarea>
       </div>
       <div className="mb-4">
         <label
