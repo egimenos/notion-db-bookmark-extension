@@ -33,7 +33,7 @@ const Form = ({ handleSaveBookmark }) => {
           </label>
           <input
             onChange={handleTitleChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-300"
             type="text"
             placeholder="Great resource I want to save"
           ></input>
@@ -47,7 +47,7 @@ const Form = ({ handleSaveBookmark }) => {
           </label>
           <input
             onKeyUp={handleTagInputEnter}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-300"
             type="text"
             placeholder="Typescript"
           ></input>
