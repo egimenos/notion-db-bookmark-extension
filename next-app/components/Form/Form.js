@@ -13,7 +13,7 @@ const Form = ({ handleSaveBookmark }) => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    console.log("onsubmit");
     handleSaveBookmark(title, tags);
   };
 
@@ -21,46 +21,52 @@ const Form = ({ handleSaveBookmark }) => {
     setTitle(e.target.value);
   };
 
-  return (
-    <div className="w-full">
-      <form onSubmit={handleSubmit} className="px-8 pt-6 pb-8 mb-4">
-        <div className="mb-4">
-          <label
-            htmlFor="title"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            Title
-          </label>
-          <input
-            onChange={handleTitleChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-300"
-            type="text"
-            placeholder="Great resource I want to save"
-          ></input>
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="tag"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            Add tag
-          </label>
-          <input
-            onKeyUp={handleTagInputEnter}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-300"
-            type="text"
-            placeholder="Typescript"
-          ></input>
-          <TagList tags={tags} />
-        </div>
+  const handleRemoveTag = (_event, tagToDelete) => {
+    const updatedTags = tags.filter((tag) => tag !== tagToDelete);
+    setTags([...updatedTags]);
+  };
 
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="submit"
+  return (
+    <div className="px-8 pt-6 pb-8 mb-4 w-full">
+      <div className="mb-4">
+        <label
+          htmlFor="title"
+          className="block text-gray-700 text-sm font-bold mb-2"
         >
-          Save
-        </button>
-      </form>
+          Title
+        </label>
+        <input
+          onChange={handleTitleChange}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-300"
+          type="text"
+          placeholder="Great resource I want to save"
+        ></input>
+      </div>
+      <div className="mb-4">
+        <label
+          htmlFor="tag"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Add tag
+        </label>
+        <input
+          onKeyUp={handleTagInputEnter}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-300"
+          type="text"
+          placeholder="Typescript"
+        ></input>
+        <div className="mt-2">
+          <TagList handleRemoveTag={handleRemoveTag} tags={tags} />
+        </div>
+      </div>
+
+      <button
+        onClick={handleSubmit}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        type="button"
+      >
+        Save
+      </button>
     </div>
   );
 };
