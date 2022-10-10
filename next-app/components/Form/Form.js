@@ -33,7 +33,7 @@ const Form = ({ originalTitle, handleSaveBookmark }) => {
   };
 
   return (
-    <div className="px-8 pt-6 pb-8 mb-4 w-full">
+    <div className="px-8 pt-6 mb-2 w-full">
       <div className="mb-4">
         <label
           htmlFor="title"
@@ -63,7 +63,7 @@ const Form = ({ originalTitle, handleSaveBookmark }) => {
           placeholder="Some notes I want to remember about the bookmark"
         ></textarea>
       </div>
-      <div className="mb-4">
+      <div className="mb-2">
         <label
           htmlFor="tag"
           className="block text-gray-700 text-sm font-bold mb-2"
