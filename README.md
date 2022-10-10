@@ -6,6 +6,20 @@ Chrome extension to add bookmarks to a notion db
 
 Based on starter template [next-chrome](https://github.com/thomaswang/next-chrome)
 
+## Create Notion DB and get API credentials
+
+To use the extensio as it is, you need to create a database, create a Notion integration and grant the database access to the integration.
+Specific instructions here: <https://developers.notion.com/docs/getting-started>
+
+Add a `.env.local` file and put your notion API credentials:
+
+```sh
+NOTION_DATABASE_ID="..."
+NOTION_API_TOKEN="..."
+```
+
+## Develop and create build
+
 ```sh
 cd next-app
 
@@ -22,4 +36,4 @@ yarn watch # on macOS
 yarn watch_linux # on Linux
 ```
 
-To load the extension, go to `chrome://extensions/`, activate "Developer mode", "Load unpacked" and select the "extension" folder.
+To load the extension, go to `chrome://extensions/`, activate "Developer mode", "Load unpacked" and select the content in the "extension" folder.
