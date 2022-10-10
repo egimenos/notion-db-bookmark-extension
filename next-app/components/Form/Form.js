@@ -1,8 +1,9 @@
 import { useState } from "react";
 import TagList from "./TagList";
 
-const Form = ({ handleSaveBookmark }) => {
-  const [title, setTitle] = useState("");
+const Form = ({ originalTitle, handleSaveBookmark }) => {
+  console.log("props", originalTitle);
+  const [title, setTitle] = useState(originalTitle);
   const [notes, setNotes] = useState("");
   const [tags, setTags] = useState([]);
 
@@ -45,6 +46,7 @@ const Form = ({ handleSaveBookmark }) => {
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-300"
           type="text"
           placeholder="Great resource I want to save"
+          value={title}
         ></input>
       </div>
       <div className="mb-4">
