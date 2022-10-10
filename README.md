@@ -11,6 +11,16 @@ Based on starter template [next-chrome](https://github.com/thomaswang/next-chrom
 To use the extensio as it is, you need to create a database, create a Notion integration and grant the database access to the integration.
 Specific instructions here: <https://developers.notion.com/docs/getting-started>
 
+The fields and types of the database are as follow
+
+| field name   | type         |
+| ------------ | ------------ |
+| Title        | Title        |
+| Tags         | MultiSelect  |
+| URL          | URL          |
+| Notes        | Text         |
+| Created time | Created time |
+
 Add a `.env.local` file and put your notion API credentials:
 
 ```sh
