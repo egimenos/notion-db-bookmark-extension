@@ -32,7 +32,7 @@ const Form = ({ originalTitle, handleSaveBookmark }) => {
   };
 
   return (
-    <div className="px-8 pt-6 mb-2 w-full">
+    <div className="px-8 pt-4 mb-2 w-full">
       <div className="mb-4">
         <label
           htmlFor="title"

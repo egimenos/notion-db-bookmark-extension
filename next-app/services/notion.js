@@ -17,7 +17,28 @@ const saveBookmarkToNotion = async (bookmark) => {
   }
 };
 
-export { saveBookmarkToNotion };
+const fetchTagList = async () => {
+  const notion = new Client({
+    auth: process.env.NEXT_PUBLIC_NOTION_API_TOKEN,
+  });
+
+  try {
+    const pages = await notion.databases.query({
+      database_id: process.env.NEXT_PUBLIC_NOTION_DATABASE_ID,
+    });
+
+    const tags = pages.results
+      .map((result) => result.properties.Tags.multi_select)
+      .flat()
+      .map((tag) => tag.name);
+
+    return [...new Set(tags)];
+  } catch (error) {
+    console.log(error);
+    throw new Error(error.message);
+  }
+};
+
 function buildPayload(bookmark) {
   return {
     Title: {
@@ -46,3 +67,5 @@ function buildPayload(bookmark) {
     },
   };
 }
+
+export { saveBookmarkToNotion, fetchTagList };
