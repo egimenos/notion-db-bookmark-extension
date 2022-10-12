@@ -9,13 +9,12 @@ const Form = ({ originalTitle, handleSaveBookmark }) => {
 
   const handleTagInputEnter = (e) => {
     if (e.keyCode === 13) {
-      setTags([...tags, e.target.value]);
+      setTags([...tags, e.target.value.trim()]);
       e.target.value = "";
     }
   };
 
   const handleSubmit = (e) => {
-    console.log("onsubmit");
     handleSaveBookmark(title, notes, tags);
   };
 
