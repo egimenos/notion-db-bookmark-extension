@@ -1,17 +1,27 @@
 import { useState } from "react";
+import Autocomplete from "./Autcomplete";
 import TagList from "./TagList";
 
-const Form = ({ originalTitle, handleSaveBookmark }) => {
-  console.log("props", originalTitle);
+const Form = ({ originalTitle, handleSaveBookmark, tagsInDB }) => {
   const [title, setTitle] = useState(originalTitle);
   const [notes, setNotes] = useState("");
   const [tags, setTags] = useState([]);
+  const [suggestedTags, setSuggestedTags] = useState([]);
 
-  const handleTagInputEnter = (e) => {
+  const handleTagInputChange = (e) => {
+    console.log("event", e.type);
     if (e.keyCode === 13) {
       setTags([...tags, e.target.value.trim()]);
       e.target.value = "";
     }
+
+    const filteredTags = tagsInDB.filter(
+      (tag) => e.target.value.length > 0 && tag.includes(e.target.value)
+    );
+
+    console.log("filtered", filteredTags);
+    setSuggestedTags([...filteredTags]);
+    console.log("suggested", suggestedTags);
   };
 
   const handleSubmit = (e) => {
@@ -29,6 +39,10 @@ const Form = ({ originalTitle, handleSaveBookmark }) => {
   const handleRemoveTag = (_event, tagToDelete) => {
     const updatedTags = tags.filter((tag) => tag !== tagToDelete);
     setTags([...updatedTags]);
+  };
+
+  const handleItemClick = (item) => {
+    console.log("clicked item", item);
   };
 
   return (
@@ -70,11 +84,17 @@ const Form = ({ originalTitle, handleSaveBookmark }) => {
           Add tag
         </label>
         <input
-          onKeyUp={handleTagInputEnter}
+          onKeyUp={handleTagInputChange}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-300"
           type="text"
           placeholder="Typescript"
         ></input>
+        {suggestedTags.length > 0 && (
+          <Autocomplete
+            items={suggestedTags}
+            handleItemClick={handleItemClick}
+          />
+        )}
         <div className="mt-2">
           <TagList handleRemoveTag={handleRemoveTag} tags={tags} />
         </div>
