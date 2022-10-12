@@ -1,5 +1,6 @@
+import { useRef } from "react";
 import { useState } from "react";
-import Autocomplete from "./Autcomplete";
+import Autocomplete from "./Autocomplete";
 import TagList from "./TagList";
 
 const Form = ({ originalTitle, handleSaveBookmark, tagsInDB }) => {
@@ -8,8 +9,9 @@ const Form = ({ originalTitle, handleSaveBookmark, tagsInDB }) => {
   const [tags, setTags] = useState([]);
   const [suggestedTags, setSuggestedTags] = useState([]);
 
+  const tagInputRef = useRef();
+
   const handleTagInputChange = (e) => {
-    console.log("event", e.type);
     if (e.keyCode === 13) {
       setTags([...tags, e.target.value.trim()]);
       e.target.value = "";
@@ -19,9 +21,13 @@ const Form = ({ originalTitle, handleSaveBookmark, tagsInDB }) => {
       (tag) => e.target.value.length > 0 && tag.includes(e.target.value)
     );
 
-    console.log("filtered", filteredTags);
     setSuggestedTags([...filteredTags]);
-    console.log("suggested", suggestedTags);
+  };
+
+  const handleItemClick = (_e, item) => {
+    setTags([...tags, item]);
+    tagInputRef.current.value = "";
+    setSuggestedTags([]);
   };
 
   const handleSubmit = (e) => {
@@ -39,10 +45,6 @@ const Form = ({ originalTitle, handleSaveBookmark, tagsInDB }) => {
   const handleRemoveTag = (_event, tagToDelete) => {
     const updatedTags = tags.filter((tag) => tag !== tagToDelete);
     setTags([...updatedTags]);
-  };
-
-  const handleItemClick = (item) => {
-    console.log("clicked item", item);
   };
 
   return (
@@ -88,6 +90,7 @@ const Form = ({ originalTitle, handleSaveBookmark, tagsInDB }) => {
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-300"
           type="text"
           placeholder="Typescript"
+          ref={tagInputRef}
         ></input>
         {suggestedTags.length > 0 && (
           <Autocomplete
