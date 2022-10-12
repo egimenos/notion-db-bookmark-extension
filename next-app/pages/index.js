@@ -5,8 +5,7 @@ import { saveBookmarkToNotion } from "../services/notion";
 const Main = () => {
   const [url, originalTitle] = useTabData();
 
-  const handleSaveBookmark = (title, tags, notes) => {
-    console.log(title, tags, url, notes);
+  const handleSaveBookmark = ({ title, tags, notes }) => {
     const bookmark = { title, tags, url, notes };
     saveBookmarkToNotion(bookmark);
   };

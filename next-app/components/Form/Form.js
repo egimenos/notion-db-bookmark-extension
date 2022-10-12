@@ -15,7 +15,7 @@ const Form = ({ originalTitle, handleSaveBookmark }) => {
   };
 
   const handleSubmit = (e) => {
-    handleSaveBookmark(title, notes, tags);
+    handleSaveBookmark({ title, notes, tags });
   };
 
   const handleTitleChange = (e) => {
@@ -58,8 +58,8 @@ const Form = ({ originalTitle, handleSaveBookmark }) => {
         <textarea
           onChange={handleNotesChange}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-300"
-          type="text"
           placeholder="Some notes I want to remember about the bookmark"
+          value={notes}
         ></textarea>
       </div>
       <div className="mb-2">

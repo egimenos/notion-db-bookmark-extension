@@ -7,6 +7,8 @@
         "styles/**",
         "pages/**",
         "components/**",
+        "hooks/**",
+        "services/**",
         "public/**",
         "helpers/**",
         "next.config.js"
@@ -27,6 +29,8 @@
         "styles/**",
         "pages/**",
         "components/**",
+        "hooks/**",
+        "services/**",
         "public/**",
         "helpers/**",
         "next.config.js"
