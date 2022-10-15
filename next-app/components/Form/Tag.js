@@ -7,7 +7,7 @@ const Tag = ({ tag, handleRemoveTag }) => {
           focusable="false"
           data-prefix="fas"
           data-icon="times"
-          class="w-3 mr-2"
+          className="w-3 mr-2"
           role="img"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 352 512"
