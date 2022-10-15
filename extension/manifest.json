@@ -2,9 +2,10 @@
   "name": "Notion Bookmarks Chrome Extension",
   "description": "Chrome extension to save links as database entries in notion",
   "version": "0.1",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "permissions": ["activeTab"],
-  "browser_action": {
+  "host_permissions": ["https://api.notion.com/*"],
+  "action": {
     "default_title": "Next.js app",
     "default_popup": "index.html"
   }

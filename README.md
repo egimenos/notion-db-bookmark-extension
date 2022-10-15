@@ -8,7 +8,7 @@ Based on starter template [next-chrome](https://github.com/thomaswang/next-chrom
 
 ## Create Notion DB and get API credentials
 
-To use the extensio as it is, you need to create a database, create a Notion integration and grant the database access to the integration.
+To use the extension as it is, you need to create a database, create a Notion integration and grant the database access to the integration.
 Specific instructions here: <https://developers.notion.com/docs/getting-started>
 
 The fields and types of the database are as follow

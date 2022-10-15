@@ -23,6 +23,7 @@ const Main = () => {
         <div>{JSON.stringify(saveBookmarkOperation)}</div>
         <h1 className="text-2xl text-center">Notion bookmarks</h1>
         <Form
+          status={saveBookmarkOperation.status}
           tagsInDB={fetchTagListOperation.data}
           originalTitle={originalTitle}
           handleSaveBookmark={handleSaveBookmark}

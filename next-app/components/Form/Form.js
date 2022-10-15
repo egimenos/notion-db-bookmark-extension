@@ -1,9 +1,10 @@
 import { useRef } from "react";
 import { useState } from "react";
 import Autocomplete from "./Autocomplete";
+import Loader from "./Loader";
 import TagList from "./TagList";
 
-const Form = ({ originalTitle, handleSaveBookmark, tagsInDB }) => {
+const Form = ({ originalTitle, handleSaveBookmark, tagsInDB, status }) => {
   const [title, setTitle] = useState(originalTitle);
   const [notes, setNotes] = useState("");
   const [tags, setTags] = useState([]);
@@ -108,7 +109,7 @@ const Form = ({ originalTitle, handleSaveBookmark, tagsInDB }) => {
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         type="button"
       >
-        Save
+        {status === "pending" ? <Loader /> : "Save"}
       </button>
     </div>
   );
