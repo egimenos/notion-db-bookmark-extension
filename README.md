@@ -2,7 +2,7 @@
 
 ## Description
 
-Chrome extension to add bookmarks to a notion db
+Browser extension/add-on tested in Chomr and Firefox to add bookmarks to a notion db.
 
 Based on starter template [next-chrome](https://github.com/thomaswang/next-chrome)
 
@@ -46,4 +46,18 @@ yarn watch # on macOS
 yarn watch_linux # on Linux
 ```
 
+## How it works
+
+The url and title of the current tab is fetched on popup open. Then you can edit the title or add some notes, and also provide tags for the bookmark. As many tags as desired can be added just by writing the name of the tag in the input box and pressing Enter, or by selecting a existing tag (fetched from your current bookmarks db) from the automcomplete drop-down list.
+
+Then just click on the "Save" button.
+
+## Load extension/add-on
+
+### Chrome
+
 To load the extension, go to `chrome://extensions/`, activate "Developer mode", "Load unpacked" and select the content in the "extension" folder.
+
+### Firefox
+
+In Firefox you will need to use the V2 version of the manifest file since this is the only one supported by firefox at the moment. Rename the manifestV2.json into manifest.json and load the extension from here : `about:debugging#/runtime/this-firefox` click "load temporary complement" and select the file with the manifest.
