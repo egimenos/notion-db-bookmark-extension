@@ -2,9 +2,9 @@
 
 ## Description
 
-Browser extension/add-on tested in Chomr and Firefox to add bookmarks to a notion db.
+Browser extension/add-on to save the current tab in a notion database including title, url, notes and tags. It has been tested both in Chrome and in Firefox.
 
-Based on starter template [next-chrome](https://github.com/thomaswang/next-chrome)
+Used starter template [next-chrome](https://github.com/thomaswang/next-chrome) to setup the first boilerplate of the project.
 
 ## Create Notion DB and get API credentials
 
