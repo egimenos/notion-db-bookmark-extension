@@ -30,7 +30,7 @@ const useAsync = (asyncFunction, immediate = true) => {
     if (immediate) {
       execute();
     }
-  }, [execute, immediate, args]);
+  }, [execute, immediate]);
 
   return { execute, status, data, error };
 };

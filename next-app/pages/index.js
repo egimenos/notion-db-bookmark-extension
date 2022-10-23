@@ -1,14 +1,24 @@
 import Form from "../components/Form/Form";
 import useTabData from "../hooks/useTabData";
-import { fetchTagList, saveBookmarkToNotion } from "../services/notion";
+import {
+  fetchTagList,
+  isAlreadySaved,
+  saveBookmarkToNotion,
+} from "../services/notion";
 import useAsync from "../hooks/useAsync";
 import Alert from "../components/Alert";
+import { useEffect } from "react";
 
 const Main = () => {
   const [url, originalTitle] = useTabData();
 
   const fetchTagListOperation = useAsync(fetchTagList, true);
   const saveBookmarkOperation = useAsync(saveBookmarkToNotion, false);
+  const isAlreadyInDB = useAsync(isAlreadySaved, false);
+
+  useEffect(() => {
+    isAlreadyInDB.execute(url);
+  }, [url]);
 
   const handleSaveBookmark = ({ title, tags, notes }) => {
     const bookmark = { title, tags, url, notes };
@@ -18,6 +28,13 @@ const Main = () => {
   return (
     <div className="w-96 p-2 flex flex-col">
       <h1 className="text-2xl text-center">Notion bookmarks</h1>
+      {isAlreadyInDB.data && (
+        <Alert
+          title="Info"
+          message="This URL is already saved in the database"
+          type="info"
+        />
+      )}
       {saveBookmarkOperation.status === "success" ? (
         <Alert
           title="Success!"
